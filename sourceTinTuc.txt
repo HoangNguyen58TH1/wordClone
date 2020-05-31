@@ -1,0 +1,338 @@
+vào Advanced system settings --> Environment Variables --> Path 2 chổ --> D:\xampp\php
+
+sửa file .env.example into .env
+tạo file .gitignore chứa (node_modules & vendor)
+Trong source có 
+package.json --> npm i (Nhiều lúc phải restart lại IDE.)
+composer.json -> composer i
+php artisan key:generate --> tạo key ở file env (source ban đầu k có key)
+php artisan serve --> run ( lúc này k đc thì nó k có db).
+Trong file DatabaseSeeder.php --> nhớ mở comment mới run được.
+Trong file .env custom lại user, pass, dbname.
+php artisan migrate --> create table
+php artisan db:seed --> cretae data
+php artisan serve --> run
+
+down package
+Cos file [.env]
+create key
+Custom user,pass,dbname
+creta db (migrate + seed)
+serve
+--------------------------------------------------------------------------------
+### 16/05/2020
+port default of laravel is: 8000
+how to change port --> php artisan serve --port=8090
+
+#Create model
+php artisan make:model NameModel
+Mỗi table tương ứng vs 1 Model.
+VD: protected $table = "type_products";
+thì 'type_products' phải giống vs tên của DB
+return --> Đường dẫn đến NameModel, khoá ngoại, khoá chính.
+
+
+Mối quan hệ giữa các model: 1vs1, 1vsN, NvsN. (N: nhiều)
+
+   hasOne
+1	   1
+ belongsTo
+
+  hasMany
+1	   n
+ belongsTo
+
+ belongsToMany
+n	      n
+ belongsToMany
+
+#Create View:
+#Create Controller:
+php artisan make:controller NameController
+
+#Create project new:
+composer create-project --prefer-dist laravel/laravel NameProject
+timezone: 'Asia/Ho_Chi_Minh'
+relationship
+
+#
+Check xem thử mình lấy được gì trong PHP
+print_r($slide);
+exit;
+or
+var_dump($slide); or dd($slide);
+exit;
+Ctrl + U
+
+@foreach() --> in array ra.
+VD: 
+@foreach($slide as $sl) 
+	Get data of array
+	{{$sl->image}} [image là field trong DB]
+	Count
+	{{count($new_product)}}
+	
+	... 
+
+	@if(condition)
+	  ...
+	@else
+	  ...
+	@endif
+@endforeach
+
+where() : ĐK
+paginate(): phân trang
+compact($var1, $var2) : ... --> truyền data ra View.
+get() --> lấy
+first() lấy cái đầu tiên --> vì mỗi sp chỉ có 1 id duy nhất thôi.
+
+{{link()}}
+{{number_format()}} --> định dạng cho giá tiền
+
+View share (phần menu ở header mà mình k thể đổ data ra ở header được) --> 
+	--> dùng view share --> Provider/AppServiceProvider.php
+	--> đổ data ra những cái dùng chưng (header, footer)
+
+Hash::make() --> mã hoá pass trong Laravel. --> nhớ use Hash ở trên.
+method cho form cần 1 field hidden.
+method post hay get thì --> nằm trong form thì post.
+
+_ Search chính xác thì like $req->key
+_ Search có chuỗi đó thì like '%'.$req->key.'%'
+
+
+### Pupperter
+Puppeteer là một ‘Node library’ do Google phát triển cung cấp các API điều khiển Chrome
+	 hoặc Chromium thông qua DevTools Protocol
+Chỉ sp chrome
+Run ở mode headless mà k cần interface --> Vs tốc độ khá nhanh.
+headless browser: browser k có interface
+
+1.
+folder new (puppeteer-test)
+npm init
+npm install --save puppeteer
+node index.js
+
+2.
+npm install --save image:downloader
+
+###Git
+git --version --> check version hien tai cua may dang dung`.
+Create repository
+Copy path of repo
+Clone ve --> git clone [path] NameFolder
+Sau khi custom repo xong. Push no len
+$git add .
+$git commit -m "content of commit"
+$git push origin master
+
+
+###NodeJS
+map() --> tạo 1 array mới vs các phần tử là kết quả từ việc thực thi 1 hàm
+	lên từng phần tử của array được gọi.
+
+######################################################################
+21/05/2020
+			AI
+load data
+tính độ lệch chuẩn
+tiền xử lý data
+tính xác xuất của từng biến liên tục theo phân phối Gausian
+Dự đoán dựa vào xác xuất
+Learning
+Kết qua cài đặt
+
+######################################################################
+22/05/2020
+Tiền xử lý văn bản
+Word Tokenize bằng thư viện UnderTheSea,
+Embedding đơn giản bằng TFIDF
+Kỹ thuật crawler trang web bằng Python , cụ thể là Beautiful Soup
+
+.trim() --> clear
+.isArray() --> check array
+.forEach() -->loop
+.map() --> in ra array new khi run lần lượt các thành phần trong array vs function nào đó
+.filter() -> lọc những thằng thoã ĐK trong function --> return array new.
+.reduce() --> rút gọn. Có thể tính tổng các số trong 1 array
+.reduceRight() --> như tren
+.every() -->  filter(lọc hết phần tử array, all thoã hết thì True, else) --> return TRUE/FALSE
+.some() --> lọc hết all phần tử, 1 cái thoã thì return TRUE, else.
+
+JSON.parse() --> convert JSON into OBJECT  
+	'{"name":"Hoang", "ho":"Nguyen"}' ---> JSON.parse(var) ---> {name: "Hoang", ho: "Nguyen"}
+JSON.stringify() --> convert OBJECT into STRINGS(JSON)
+	{name: "Hoang", ho: "Nguyen"} ---> JSON.stringify(var) ---> {"name":"Hoang", "ho":"Nguyen"}
+						      thực ra là : '{"name":"Hoang", "ho":"Nguyen"}'
+
+Date.now() --> return số mili giấy kể từ 1-1-1970. === Date().getTime()
+
+Getters & Setters
+
+######################################################################
+24/05/2020
+# ES6
+Let
+Const
+Arrow Function
+	don't need:
+		function
+		return 
+		{}
+Const safe > var ==> Because biểu thức function luôn có value k đổi.
+	don't need:
+		return
+		{}
+		if: function là 1 câu lệnh đơn.
+
+# Difference between variable function and generate function js
+######################################################################
+24/05/2020
+
+git pull --> pull code về.
+Ctrl + ` --> focus terminal
+Ctrl + 1 --> focus editor.
+
+Arrow --> mũi tên
+hoisted --> var, const, let, variable function, generate function.
+Alt Shift F --> format file JS.
+Class --> methods contructor()
+Params default
+
+.find() --> return value của element first pass fucntion condition.
+.findIndex() --> return index của element first pass fucntion condition.
+
+MAX_SAFE_INTEGER --> 9007199254740991
+MIN_SAFE_INTEGER --> -9007199254740991
+number.isInteger() --> return true if number is number integer
+number.isSafeInteger() --> return true if number scope number safe integer
+
+Finity : có hạn
+Infinity : vô hạn
+isFinity() --> return false if number is Infinity or NaN.
+
+################################################################################
+Learning NodeJS
+
+NodeJS --> asynchronous
+NodeJS --> runs single-threaded, non-blocking, asynchronously programming --> very memory efficient
+       --> đơn luồng, không khối, bất đồng bộ --> rất hiệu quả về bộ nhớ.
+
+What can NodeJS do?
++ create content page dynamic
++ create, open, read, write, delete and close file on server
++ collect form data (thu thập data biểu mẫu)
++ add, delete, modify data in DB.
+
+Thư viện của JS: React, jQuery,...
+Framework của JS: Angular, VueJS, Embr.js, ...
+Công cụ của JS: Gulp, Grunt, npm, ...
+
+Module nodeJS như thư viện of JS.
+NodeJS có:
+module HTTP --> cho phép truyền data qua giao thức HTTP
+createServer
+writeHead
+write
+end
+
+append : chắp thêm
+File System: var fs = require('fs');
+Read file: 
++ fs.readFile
+
+Create File:
++ fs.appendFile() --> create file new vs content. If file có rồi thì chắp thêm content.
++ fs.open() --> như trên có thêm params 2.
++ fs.writeFile() --> replace file exist, if not exist --> cretae like append.
+
+Update File:
++ fs.open()
++ fs.writeFile()
+
+Delete File:
++ fs.unlink()
+
+Rename File:
++ fs.rename()
+
+# URL Module ( require('url') )
+q = url.parse(link, true) --> host, pathname, search
+q.query --> query param of 'Search'
+
+cd.. --> quay lại 1 folder.
+cd nameFolder --> đến folder đó.
+
+text classifier node module - a Thắng
+
+################################################################################
+29/05/2020
+NPM - node package module
+npm i upper-case
+Use: var uc = require('upper-case');
+# Events
+Node.js --> event-driven
+1 hành động = 1 event
+
+fs
+createReadStream('fileName')
+
+Event:
+var events = require('events'); --> EventEmitter
+constructer --> EventEmitter()
+
+UploadFiles:
+Formidable --> module này work file best.
+constructer --> IncomingForm()
+
+temporary : tạm thời
+
+###
+_ Git
++ Basic:
+git init
+git clone
+git pull
+
+git add 
+git add .
+git commit
+git push = gp
+
+git log
+git status
+
+git remote add origin url (remote source tren git ve)
+git push -u origin master
+Khi push code lên gặp conflict --> pull về đã --> Current(máy mình) || Incoming(trên git) --> add, commit, gp lại.
+
++ Advance
+git branch
+git checkout
+git merge
+
+git rebase
+git cherry-pick
+
+###
+
+# Upload File NodeJS
+Module formidable --> work best with file upload.
+npm i formidable
+require
+
+#Email nodeJS
+Module Nodemailer
+npm i nodemailer
+subject : chủ từ (môn học)
+commas: dấu phẩy
+from, to, subject, text, html, attachments[image, file, ...], ...
+
+Express: framework of NodeJS
+mkdir nameFolder --> create folder name is nameFolder
+
+
+
+
